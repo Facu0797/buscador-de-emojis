@@ -8,13 +8,13 @@ const BuscarEmoji = ({setEmoji, setDarkMode, darkMode}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        setEmoji(input);
-
         if (input === "") {
             setError(true)
             setTimeout(() => setError(false), 1500);
             return;
         }
+        setEmoji(input);
+        setInput("");
     }
 
     const handleClick = () => {
@@ -28,7 +28,7 @@ const BuscarEmoji = ({setEmoji, setDarkMode, darkMode}) => {
     return ( 
         <section className={`form ${darkMode ? "dark-mode" : ""}`}>
             <form onSubmit={handleSubmit}>
-                <input onChange={(e) => {setInput(e.target.value)}} type="text" placeholder='Apple'/>
+                <input value={input} onChange={(e) => {setInput(e.target.value)}} type="text" placeholder='Some emoji word...'/>
                 <button onClick={handleClick} className='button' type='button'>All</button>
                 <div onClick={handleDarkMode} className="toggle-box">
                     <div className="toggle-circle"></div>
